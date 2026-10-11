@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+htmlcov/
+.coverage
+
+# 环境与密钥
+.env
+
+# Celery
+celerybeat-schedule*
+
+# macOS
+.DS_Store
+
+# ZCode 会话分享产物
+.zcode-share/

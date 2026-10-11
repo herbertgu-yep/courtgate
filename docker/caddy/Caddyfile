@@ -1,0 +1,6 @@
+# 公网接入用：自动申请/续期 Let's Encrypt 证书的反向代理。
+# 用法见 README「公网接入」：需配合 docker-compose.public.yml，并通过环境变量提供域名。
+{$COURTGATE_DOMAIN} {
+	reverse_proxy api:8000
+	encode gzip
+}

@@ -1,0 +1,21 @@
+# 可选：有域名时叠加此文件启用 Caddy 自动 HTTPS（申请与续期全自动）。
+# 用法见 README「部署到云服务器」：
+#   COURTGATE_DOMAIN=app.example.com \
+#   docker compose -f docker/docker-compose.yml -f docker/docker-compose.public.yml up -d
+services:
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    ports: ["80:80", "443:443"]
+    environment:
+      COURTGATE_DOMAIN: ${COURTGATE_DOMAIN:?请先设置环境变量 COURTGATE_DOMAIN=你的域名}
+    volumes:
+      - ./caddy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - api
+
+volumes:
+  caddy_data:
+  caddy_config:
